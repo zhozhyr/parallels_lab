@@ -1,4 +1,4 @@
-APP ?= /app/fib_spark.py
+APP ?= /app/fib_app.py
 N ?= 10
 
 up:
@@ -8,14 +8,7 @@ down:
 	@docker compose down
 
 fib:
-	@docker compose run --rm spark-submit \
-	  /opt/bitnami/spark/bin/spark-submit \
-	  --master spark://spark-master:7077 \
-	  --deploy-mode client \
-	  $(APP) $(N)
-
-fib-local:
-	@docker compose run --rm spark-submit \
+	@docker compose run --rm spark \
 	  /opt/bitnami/spark/bin/spark-submit \
 	  --master local[*] \
 	  --deploy-mode client \
