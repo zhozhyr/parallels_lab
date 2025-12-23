@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  spark:
+    image: apache/spark:3.5.1-python3
+    working_dir: /app
+    volumes:
+      - ./:/app
+      - ./jars:/extra-jars
+    ports:
+      - "4040:4040"
